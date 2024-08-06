@@ -1,3 +1,3 @@
-#echo "hello world"
-echo 'Hello World'; sleep infinity
+echo 'Hello World'
+sleep infinity
 exec "$@"
