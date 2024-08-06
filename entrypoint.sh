@@ -1,4 +1,5 @@
-#echo "hello world"
-echo 'Hello World HELŞLPPO-GMREJK'
+
+echo 'Hello World'
 sleep infinity
+
 exec "$@"
