@@ -18,7 +18,7 @@
 #           ports:
 #             - containerPort: 80
 
-apiVersion: apps/v1
+apiVersion: app/v1
 kind: Deployment
 metadata:
   name: simple-html-deployment
