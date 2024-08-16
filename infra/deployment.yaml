@@ -18,7 +18,40 @@
 #           ports:
 #             - containerPort: 80
 
-apiVersion: app/v1
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: simple-html-deployment
+#   namespace: default
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: simple-html
+#   template:
+#     metadata:
+#       labels:
+#         app: simple-html
+#     spec:
+#       containers:
+#       - name: simple-html
+#         image: hav1s/simple-html:latest  # Ensure this is correct
+#         ports:
+#         - containerPort: 80
+#         readinessProbe:                # Add readiness and liveness probes
+#           httpGet:
+#             path: /
+#             port: 80
+#           initialDelaySeconds: 5
+#           periodSeconds: 10
+#         livenessProbe:
+#           httpGet:
+#             path: /
+#             port: 80
+#           initialDelaySeconds: 15
+#           periodSeconds: 20
+
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-html-deployment
@@ -35,16 +68,16 @@ spec:
     spec:
       containers:
       - name: simple-html
-        image: hav1s/simple-html:latest  # Ensure this is correct
+        image: hav1s/simple-html:latest  # Ensure this matches the image in kustomization.yaml
         ports:
         - containerPort: 80
-        readinessProbe:                # Add readiness and liveness probes
+        readinessProbe:                # Readiness probe example
           httpGet:
             path: /
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
-        livenessProbe:
+        livenessProbe:                 # Liveness probe example
           httpGet:
             path: /
             port: 80
