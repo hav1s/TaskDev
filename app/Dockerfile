@@ -9,6 +9,6 @@ RUN chmod +x /entrypoint.sh
 EXPOSE 80
 
 #ENTRYPOINT ./entrypoint.sh
-ENTRYPOINT ["/usr/local/bin/app/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["nginx", "-g", "daemon off;"]
