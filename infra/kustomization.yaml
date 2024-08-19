@@ -1,5 +1,8 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
+metadata:
+  name: simple-html-kustomization
+  namespace: default
 resources:
   - deployment.yaml
   - service.yaml
