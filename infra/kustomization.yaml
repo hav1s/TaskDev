@@ -6,10 +6,10 @@ metadata:
 resources:
   - deployment.yaml
   - service.yaml
-images:
-    - name: hav1s/simple-html-app
-      newName: hav1s/simple-html-app
-      newTag: v1 #new tag
+# images:
+#     - name: hav1s/simple-html-app
+#       newName: hav1s/simple-html-app
+#       newTag: v1 #new tag
 
 
 
