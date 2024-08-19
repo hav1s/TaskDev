@@ -1,56 +1,63 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx-container
-        image: nginx:alpine
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: html-files
-          mountPath: /usr/share/nginx/html
-        command: ["/usr/local/bin/entrypoint.sh"]
-        args: ["nginx", "-g", "daemon off;"]
-      volumes:
-      - name: html-files
-        configMap:
-          name: nginx-html-configmap
-
-
-
-
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
-#   name: simple-html-deployment
+#   name: nginx-deployment
+#   labels:
+#     app: nginx
 # spec:
-#   replicas: 1
+#   replicas: 3
 #   selector:
-#     matchLa-html
-#   template:bels:
-#       app: simple
+#     matchLabels:
+#       app: nginx
+#   template:
 #     metadata:
 #       labels:
-#         app: simple-html
+#         app: nginx
 #     spec:
-#       containers: 
-#         - name: nginx
-#           image: hav1s/simple-html:latest
-#           ports:
-#             - containerPort: 80
+#       containers:
+#       - name: nginx-container
+#         image: <your-docker-image>
+#         ports:
+#         - containerPort: 80
+#         volumeMounts:
+#         - name: app-files
+#           mountPath: /usr/share/nginx/html
+#           subPath: html
+#         - name: entrypoint-file
+#           mountPath: /usr/local/bin/entrypoint.sh
+#           subPath: entrypoint.sh
+#         command: ["/usr/local/bin/entrypoint.sh"]
+#         args: ["nginx", "-g", "daemon off;"]
+#       volumes:
+#       - name: app-files
+#         configMap:
+#           name: app-files-config
+#       - name: entrypoint-file
+#         configMap:
+#           name: entrypoint-config
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-html-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLa-html
+  template:bels:
+      app: simple
+    metadata:
+      labels:
+        app: simple-html
+    spec:
+      containers: 
+        - name: nginx
+          image: hav1s/simple-html:latest
+          ports:
+            - containerPort: 80
 
 # apiVersion: apps/v1
 # kind: Deployment
