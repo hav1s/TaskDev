@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: simple-html-deployment
   labels:
-    app: nginx
+    app: simple-html
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: simple-html
   template:
     metadata:
       labels:
-        app: nginx
+        app: simple-html
     spec:
       containers:
       - name: simple-html-container
