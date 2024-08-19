@@ -35,10 +35,6 @@
 #       - name: entrypoint-file
 #         configMap:
 #           name: entrypoint-config
-
-
-
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
