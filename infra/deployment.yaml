@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: simple-html-container
-        image: hav1s/simple-html  
+        image: hav1s/simple-html-app
         ports:
         - containerPort: 80
         volumeMounts:

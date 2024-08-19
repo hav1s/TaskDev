@@ -8,8 +8,8 @@ resources:
   - service.yaml
 
 images:
-    - name: hav1s/simple-html
-      newName: hav1s/simple-html
+    - name: hav1s/simple-html-app
+      newName: hav1s/simple-html-app
       newTag: v1 #new tag
 
 
