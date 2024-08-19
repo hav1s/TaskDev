@@ -48,14 +48,14 @@ spec:
   selector:
     matchLa-html
   template:bels:
-      app: simple
+      app: nginx
     metadata:
       labels:
         app: simple-html
     spec:
       containers: 
         - name: nginx
-          image: hav1s/simple-html:latest
+          image: hav1s/simple-html:v1
           ports:
             - containerPort: 80
 
