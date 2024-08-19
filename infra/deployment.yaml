@@ -1,3 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-files
+          mountPath: /usr/share/nginx/html
+        command: ["/usr/local/bin/entrypoint.sh"]
+        args: ["nginx", "-g", "daemon off;"]
+      volumes:
+      - name: html-files
+        configMap:
+          name: nginx-html-configmap
+
+
+
+
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
@@ -5,9 +39,9 @@
 # spec:
 #   replicas: 1
 #   selector:
-#     matchLabels:
-#       app: simple-html
-#   template:
+#     matchLa-html
+#   template:bels:
+#       app: simple
 #     metadata:
 #       labels:
 #         app: simple-html
@@ -51,35 +85,35 @@
 #           initialDelaySeconds: 15
 #           periodSeconds: 20
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: simple-html-deployment
-  namespace: default
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: simple-html
-  template:
-    metadata:
-      labels:
-        app: simple-html
-    spec:
-      containers:
-      - name: simple-html
-        image: hav1s/simple-html:latest  # Ensure this matches the image in kustomization.yaml
-        ports:
-        - containerPort: 80
-        readinessProbe:                # Readiness probe example
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:                 # Liveness probe example
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 20
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: simple-html-deployment
+#   namespace: default
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: simple-html
+#   template:
+#     metadata:
+#       labels:
+#         app: simple-html
+#     spec:
+#       containers:
+#       - name: simple-html
+#         image: hav1s/simple-html:latest  # Ensure this matches the image in kustomization.yaml
+#         ports:
+#         - containerPort: 80
+#         readinessProbe:                # Readiness probe example
+#           httpGet:
+#             path: /
+#             port: 80
+#           initialDelaySeconds: 5
+#           periodSeconds: 10
+#         livenessProbe:                 # Liveness probe example
+#           httpGet:
+#             path: /
+#             port: 80
+#           initialDelaySeconds: 15
+#           periodSeconds: 20

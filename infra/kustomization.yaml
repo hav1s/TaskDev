@@ -1,3 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
 # kind: Kustomization
 
@@ -10,20 +26,20 @@
 #     newName: hav1s/simple-html
 #     newTag: latest
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: simple-html-kustomization
-  namespace: default
-spec:
-  interval: 10m0s  # Optional: Set how often the sync should happen
-  path: ./          # Ensure this points to the correct directory
-  prune: true       # Ensure resources not in the YAML are removed
-  resources:
-    - deployment.yaml
-    - service.yaml
-  images:
-    - name: hav1s/simple-html
-      newName: hav1s/simple-html
-      newTag: latest
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: simple-html-kustomization
+#   namespace: default
+# spec:
+#   interval: 10m0s  # Optional: Set how often the sync should happen
+#   path: ./          # Ensure this points to the correct directory
+#   prune: true       # Ensure resources not in the YAML are removed
+#   resources:
+#     - deployment.yaml
+#     - service.yaml
+#   images:
+#     - name: hav1s/simple-html
+#       newName: hav1s/simple-html
+#       newTag: latest
 
