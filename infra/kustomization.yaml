@@ -1,16 +1,16 @@
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: simple-html-kustomization
-#   namespace: default
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: simple-html-kustomization
+  namespace: default
 resources:
   - deployment.yaml
   - service.yaml
 
-# images:
-#     - name: hav1s/simple-html-app
-#       newName: hav1s/simple-html-app
-#       newTag: v1 #new tag
+images:
+    - name: hav1s/simple-html-app
+      newName: hav1s/simple-html-app
+      newTag: v1 #new tag
 
 
 
