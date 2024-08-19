@@ -1,3 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-html-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+    containers:
+      - name: simple-html-container
+        image: hav1s/simple-html  # Replace with your actual image name
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: app-files
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html
+        - name: entrypoint-file
+          mountPath: /usr/local/bin/entrypoint.sh
+          subPath: entrypoint.sh
+        command: ["/usr/local/bin/entrypoint.sh"]
+        args: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - name: app-files
+        configMap:
+          name: app-files-config
+      - name: entrypoint-file
+        configMap:
+          name: entrypoint-config
+
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
@@ -35,25 +73,30 @@
 #       - name: entrypoint-file
 #         configMap:
 #           name: entrypoint-config
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: simple-html-deployment
-spec:
-  replicas: 3
-  selector:
-    matchLa-html
-  template:bels:
-      app: nginx
-    metadata:
-      labels:
-        app: simple-html
-    spec:
-      containers: 
-        - name: nginx
-          image: hav1s/simple-html:v1
-          ports:
-            - containerPort: 80
+
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: simple-html-deployment
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLa-html
+#   template:bels:
+#       app: nginx
+#     metadata:
+#       labels:
+#         app: simple-html
+#     spec:
+#       containers: 
+#         - name: nginx
+#           image: hav1s/simple-html:v1
+#           ports:
+#             - containerPort: 80
+
+
 
 # apiVersion: apps/v1
 # kind: Deployment
