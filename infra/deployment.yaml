@@ -1,9 +1,45 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: simple-html-deployment
+#   labels:
+#     app: simple-html
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: simple-html
+#   template:
+#     metadata:
+#       labels:
+#         app: simple-html
+#     spec:
+#       containers:
+#       - name: simple-html-container
+#         image: hav1s/simple-html-app
+#         ports:
+#         - containerPort: 80
+#         volumeMounts:
+#         - name: app-files
+#           mountPath: /usr/share/nginx/html/index.html
+#           subPath: index.html
+#         - name: entrypoint-file
+#           mountPath: /usr/local/bin/entrypoint.sh
+#           subPath: entrypoint.sh
+#         command: ["/usr/local/bin/entrypoint.sh"]
+#         args: ["nginx", "-g", "daemon off;"]
+#       volumes:
+#       - name: app-files
+#         configMap:
+#           name: app-files-config
+#       - name: entrypoint-file
+#         configMap:
+#           name: entrypoint-config
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-html-deployment
-  labels:
-    app: simple-html
 spec:
   replicas: 3
   selector:
@@ -19,22 +55,6 @@ spec:
         image: hav1s/simple-html-app
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: app-files
-          mountPath: /usr/share/nginx/html/index.html
-          subPath: index.html
-        - name: entrypoint-file
-          mountPath: /usr/local/bin/entrypoint.sh
-          subPath: entrypoint.sh
-        command: ["/usr/local/bin/entrypoint.sh"]
-        args: ["nginx", "-g", "daemon off;"]
-      volumes:
-      - name: app-files
-        configMap:
-          name: app-files-config
-      - name: entrypoint-file
-        configMap:
-          name: entrypoint-config
 
 
 # apiVersion: apps/v1
