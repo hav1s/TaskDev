@@ -14,7 +14,7 @@ spec:
       labels:
         app: nginx
     spec:
-    containers:
+      containers:
       - name: simple-html-container
         image: hav1s/simple-html  
         ports:
@@ -28,13 +28,14 @@ spec:
           subPath: entrypoint.sh
         command: ["/usr/local/bin/entrypoint.sh"]
         args: ["nginx", "-g", "daemon off;"]
-    volumes:
+      volumes:
       - name: app-files
         configMap:
           name: app-files-config
       - name: entrypoint-file
         configMap:
           name: entrypoint-config
+
 
 # apiVersion: apps/v1
 # kind: Deployment
