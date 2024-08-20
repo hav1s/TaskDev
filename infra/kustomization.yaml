@@ -9,10 +9,7 @@ resources:
 images:
     - name: hav1s/simple-html
       newName: hav1s/simple-html
-      newTag: v1 #new tag
-
-
-
+      newTag: v1 
 
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
 # kind: Kustomization
@@ -42,4 +39,3 @@ images:
 #     - name: hav1s/simple-html
 #       newName: hav1s/simple-html
 #       newTag: latest
-

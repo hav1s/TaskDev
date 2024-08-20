@@ -16,14 +16,12 @@ kind: Service
 metadata:
   name: simple-html-service
   labels:
-    app: nginx
+    app: simple-html
 spec:
   type: LoadBalancer
   selector:
-    app: nginx
+    app: simple-html
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-
-

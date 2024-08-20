@@ -52,10 +52,9 @@ spec:
     spec:
       containers:
       - name: simple-html-container
-        image: hav1s/simple-html
+        image: hav1s/simple-html:v1
         ports:
         - containerPort: 80
-
 
 # apiVersion: apps/v1
 # kind: Deployment
