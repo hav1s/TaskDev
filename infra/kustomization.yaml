@@ -7,8 +7,8 @@ resources:
   - deployment.yaml
   - service.yaml
 images:
-    - name: hav1s/simple-html-app
-      newName: hav1s/simple-html-app
+    - name: hav1s/simple-html
+      newName: hav1s/simple-html
       newTag: v1 #new tag
 
 
