@@ -54,8 +54,8 @@ spec:
       - name: simple-html-container
         image: hav1s/simple-html:v1
         ports:
-      imagePullSecrets:
-      -name: myregistrykey
+      # imagePullSecrets:
+      # -name: myregistrykey
         - containerPort: 80
 
 # apiVersion: apps/v1
